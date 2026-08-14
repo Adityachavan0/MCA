@@ -1,11 +1,19 @@
 #include<stdio.h>
-
+int linearSearch(int size,int a[],int target){
+    for(int i=0;i<size;i++){
+        if(a[i]==target){
+            return i;
+        }
+    }
+    return -1;
+}
 int main(){
-    int a[50],i,target,size,flag=0;
+    int i,target,size;
 
     printf("Enter Size Of Array:-");
     scanf("%d",&size);
 
+    int a[size];
     printf("Enter Array Elements:\n");
     for(i=0;i<size;i++){
         printf("%d:",i+1);
@@ -20,15 +28,12 @@ int main(){
     printf("\nEnter Value for Search:\t");
     scanf("%d",&target);
 
-    for(i=0;i<size;i++){
-        if(a[i]==target){
-            flag=1;
-            printf("Data is Present at position %d\n",i+1);
-            break;
-        }
+    int flag=linearSearch(size,a,target);
+    if(flag<0){
+        printf("Element is not Present\n");
     }
-    if(flag==0){
-        printf("Data is not Present\n");
+    else{
+        printf("Element found at %d index",flag);
     }
     return 0;
 }
